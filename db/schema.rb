@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_04_093750) do
+ActiveRecord::Schema.define(version: 2018_05_04_095220) do
+
+  create_table "astronauts", force: :cascade do |t|
+    t.string "name"
+    t.string "mail"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "grade"
+    t.index ["grade"], name: "index_astronauts_on_grade"
+  end
 
   create_table "grades", force: :cascade do |t|
     t.string "name"
