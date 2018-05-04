@@ -1,6 +1,6 @@
-class CreatePlanets < ActiveRecord::Migration[5.2]
+class CreateGrades < ActiveRecord::Migration[5.2]
   def change
-    create_table :planets do |t|
+    create_table :grades do |t|
       t.string :name
       t.string :description
 
