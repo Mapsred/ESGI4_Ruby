@@ -13,6 +13,29 @@
   <title>RubyPlanet</title>
 </head>
 <body>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <%= link_to "PlanetRuby", home_path, :class => "navbar-brand" %>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li <%= active_link(home_path) ? 'class=active' : '' %>>
+          <%= link_to "Home", home_path %>
+        </li>
+        <li <%= active_link(planets_path) ? 'class=active' : '' %>>
+          <%= link_to "Planetes", planets_path %>
+        </li>
+        <li>
+          <%= link_to "Astronautes", "#" %>
+        </li>
+        <li <%= active_link(grades_path) ? 'class=active' : '' %>>
+          <%= link_to "Grades", grades_path %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 <div class="container">
   <%= yield %>
 </div>
