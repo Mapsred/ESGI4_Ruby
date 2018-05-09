@@ -37,7 +37,14 @@
   </div>
 </nav>
 <div class="container">
+  <% flash.each do |name, msg| %>
+    <div class="alert alert-<%= name %>">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span></button>
+      <%= msg %>
+    </div>
+  <% end %>
+
   <%= yield %>
-</div>
-</body>
+</div> <!-- /.container --></body>
 </html>

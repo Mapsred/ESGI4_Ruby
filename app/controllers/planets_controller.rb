@@ -14,6 +14,13 @@ class PlanetsController < ApplicationController
     @planet = Planet.new
   end
 
+  def destroy
+    @planet = Planet.find(params[:id])
+    # @planet.destroy
+
+    flash[:success] = 'Planet #' + params[:id] + ' destroyed !'
+  end
+
   def create
     @planet = Planet.new(params.require(:planet).permit(:name, :description))
     if @planet.save
