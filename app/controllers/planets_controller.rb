@@ -16,7 +16,7 @@ class PlanetsController < ApplicationController
 
   def destroy
     @planet = Planet.find(params[:id])
-    # @planet.destroy
+    @planet.destroy
 
     flash[:success] = 'Planet #' + params[:id] + ' destroyed !'
   end
