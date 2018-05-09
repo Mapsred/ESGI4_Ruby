@@ -2,7 +2,7 @@
 
 # Planet Controller
 class PlanetsController < ApplicationController
-  before_action :fetch_planet, only: %i[show edit update]
+  before_action :fetch_planet, only: %i[show edit update destroy]
 
   def index
     @planets = Planet.all

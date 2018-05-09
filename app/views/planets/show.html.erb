@@ -1,0 +1,25 @@
+<div class="nav-header">
+  <a class="btn btn-primary btn-sm" href="<%= planets_path %>"><span class="glyphicon glyphicon-chevron-left"></span>
+    Retour</a>
+  <h3>Planète <%= @planet.name %></h3>
+</div>
+
+<div class="well">
+  <div class="row">
+    <div class="col-md-12">
+      <label class="col-sm-2">Nom</label>
+      <span><%= @planet.name %></span>
+    </div>
+
+    <div class="col-md-12">
+      <label class="col-sm-2">Description</label>
+      <span><%= @planet.description %></span>
+    </div>
+
+    <div class="col-md-12">
+      <label class="col-sm-2">Ajoutée le</label>
+      <span><%= @planet.created_at.strftime('%d/%m/%Y') %></span>
+    </div>
+
+  </div>
+</div>
