@@ -2,20 +2,35 @@
 
 # Planet Controller
 class PlanetsController < ApplicationController
+  before_action :fetch_planet, only: %i[show edit update]
+
   def index
     @planets = Planet.all
   end
 
   def show
-    @planet = Planet.find(params[:id])
+    # @planet fetched from :fetch_planet
   end
 
   def new
     @planet = Planet.new
   end
 
+  def edit
+    # @planet fetched from :fetch_planet
+  end
+
+  def update
+    if @planet.update_attributes params.require(:planet).permit(:name, :description)
+      flash[:success] = 'Planet #' + params[:id] + ' updated !'
+
+      redirect_to planet_path @planet
+    else
+      render action: :edit
+    end
+  end
+
   def destroy
-    @planet = Planet.find(params[:id])
     @planet.destroy
 
     flash[:success] = 'Planet #' + params[:id] + ' destroyed !'
@@ -30,4 +45,7 @@ class PlanetsController < ApplicationController
     end
   end
 
+  def fetch_planet
+    @planet = Planet.find(params[:id])
+  end
 end
