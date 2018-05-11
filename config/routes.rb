@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'home#index', as: 'home'
 
   # Routes for planets
-  resources :planets, except: %i[create]
+  resources :planets
 
   # Routes for grades
   resources :grades
