@@ -31,3 +31,6 @@
 
 # Untrack .idea
 /.idea
+
+# Untrack vendor
+vendor/*

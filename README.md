@@ -22,3 +22,13 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+git clone git@github.com:Mapsred/RubyPlanet.git
+
+cd RubyPlanet
+
+bin/rails db:migrate RAILS_ENV=development
+
+Utilisation de RubyMine pour Run
+
+rdv sur http://127.0.0.1:3000/

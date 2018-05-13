@@ -13,7 +13,8 @@
   <title>RubyPlanet</title>
 </head>
 <body>
-<% is_planet_path = active_link(planets_path) || active_link(new_planet_path) || active_link(edit_planet_path) || active_link(planet_path) %>
+<% is_planet_path = active_link(planets_path) || active_link(new_planet_path) %>
+<% is_astronaut_path = active_link(astronauts_path) || active_link(new_astronaut_path) %>
 <% is_grade_path = active_link(grades_path) || active_link(new_grade_path) %>
 <nav class="navbar navbar-default">
   <div class="container-fluid">
@@ -28,8 +29,8 @@
         <li <%= is_planet_path ? 'class=active' : '' %>>
           <%= link_to "Planètes", planets_path %>
         </li>
-        <li>
-          <%= link_to "Astronautes", "#" %>
+        <li <%= is_astronaut_path ? 'class=active' : '' %>>
+          <%= link_to "Astronautes", astronauts_path %>
         </li>
         <li <%= is_grade_path ? 'class=active' : '' %>>
           <%= link_to "Grades", grades_path %>

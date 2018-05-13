@@ -7,4 +7,7 @@ Rails.application.routes.draw do
   # Routes for grades
   resources :grades
 
+  # Routes for astronauts
+  resources :astronauts
+
 end
