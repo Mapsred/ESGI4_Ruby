@@ -8,20 +8,27 @@ class AstronautsController < ApplicationController
     @astronauts = Astronaut.all
   end
 
-  def show
-    # @astronaut fetched from :fetch_astronaut
-  end
-
   def new
     @astronaut = Astronaut.new
   end
 
-  def edit
-    # @astronaut fetched from :fetch_astronaut
+  def create
+    @astronaut = Astronaut.new(params.require(:astronaut).permit(:name, :mail, :grade))
+    if @astronaut.save
+      redirect_to astronauts_url
+    else
+      render action: 'new'
+    end
+  end
+
+  def show;
+  end
+
+  def edit;
   end
 
   def update
-    if @astronaut.update_attributes params.require(:astronaut).permit(:name, :description)
+    if @astronaut.update_attributes params.require(:astronaut).permit(:name, :mail, :grade)
       flash[:success] = 'Astronaut #' + params[:id] + ' updated !'
 
       redirect_to astronaut_path @astronaut
@@ -36,14 +43,6 @@ class AstronautsController < ApplicationController
     flash[:success] = 'Astronaut #' + params[:id] + ' destroyed !'
   end
 
-  def create
-    @astronaut = Astronaut.new(params.require(:astronaut).permit(:name, :description))
-    if @astronaut.save
-      redirect_to astronauts_url
-    else
-      render action: 'new'
-    end
-  end
 
   def fetch_astronaut
     @astronaut = Astronaut.find(params[:id])
