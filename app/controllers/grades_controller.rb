@@ -1,45 +1,49 @@
 class GradesController < ApplicationController
+  before_action :set_grade, only: %i[show edit update destroy]
+
   def index
     @grades = Grade.all
   end
 
+  def show; end
+
   def new
+    @grade = Grade.new
   end
 
   def create
-
-    errors = []
-    if(!params.has_key?(:name))
-      errors["name"] = "Le nom ne peut pas être vide"
+    @grade = Grade.new(
+        grade_params
+    )
+    if @grade.save
+      redirect_to @grade
+    else
+      render 'new'
     end
-    if(!params.has_key?(:alias))
-      errors["alias"] = "L'alias ne peut pas être vide"
-    end
-    if(!params.has_key?(:description))
-      errors["description"] = "La description ne peut pas être vide"
-    end
-
-    if(errors.empty?)
-      @grade = Grade.new(params)
-      if @grade.save
-        redirect_to @grade
-      else
-        render "new"
-      end
-      # grades.name = params[:name]
-      # grades.alias = params[:alias]
-      # grades.description = params[:description]
-      # grades.save
-
-    end
-
   end
 
-  def is_param_valid(param, key)
-    if(param.has_key?(key))
-      return true
+  def edit; end
+
+  def update
+    if @grade.update(grade_params)
+      redirect_to @grade
     else
-      return false
+      render 'edit'
     end
+  end
+
+  def destroy
+    @grade.destroy
+    redirect_to grades_url
+  end
+
+  private
+
+  def grade_params
+    params.require(:grade).permit(:name, :alias, :description)
+  end
+
+  def set_grade
+    @grade = Grade.find(params[:id])
   end
 end
