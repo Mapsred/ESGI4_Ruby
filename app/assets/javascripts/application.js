@@ -10,15 +10,4 @@ $(document).ready(function () {
             'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
         }
     });
-
-    $('.delete-planet').click(function () {
-        let id = $(this).data('id');
-        $.ajax({
-            type: "DELETE",
-            url: "/planets/" + id,
-            success: function () {
-                window.location.reload();
-            }
-        });
-    });
 });
