@@ -1,35 +1,42 @@
 <% if @astronaut.errors.any? %>
-    <div class="callout callout-danger">
-      <h4>Erreur lors de la sauvegarde de l'objet</h4>
+  <div class="callout callout-danger">
+    <h4>Erreur lors de la sauvegarde de l'objet</h4>
 
-      <p>Il y a une ou plusieurs erreurs sur cet objet :</p>
-      <ul>
-        <% @astronaut.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
+    <p>Il y a une ou plusieurs erreurs sur cet objet :</p>
+    <ul>
+      <% @astronaut.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
 
-<%= form_with(model: @astronaut, :html => { :class => 'form-horizontal'}) do |f| %>
-    <div class="well">
-      <div class="form-group">
-        <label class="col-sm-2 control-label"><%= f.label :name %></label>
-        <div class="col-sm-5">
-          <%= f.text_field :name, :required => true, :class => 'form-control' %>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="col-sm-2 control-label"><%= f.label :mail %></label>
-        <div class="col-sm-5">
-          <%= f.text_field :mail, :required => true, :class => 'form-control' %>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-          <%= f.submit :class => 'btn btn-primary' %>
-        </div>
+<%= simple_form_for(@astronaut, :html => { :class => 'form-horizontal' }) do |f| %>
+  <div class="well">
+    <div class="form-group">
+      <label class="col-sm-2 control-label"><%= f.label :name %></label>
+      <div class="col-sm-5">
+        <%= f.text_field :name, :required => true, :class => 'form-control' %>
       </div>
     </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label"><%= f.label :mail %></label>
+      <div class="col-sm-5">
+        <%= f.text_field :mail, :required => true, :class => 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label"><%= f.label :grade %></label>
+      <div class="col-sm-5">
+        <%= f.association :grade, :required => true, prompt: 'Choose your grade', label: false,
+                          input_html: { :class => 'form-control' } %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <%= f.submit :class => 'btn btn-primary' %>
+      </div>
+    </div>
+  </div>
 <% end %>

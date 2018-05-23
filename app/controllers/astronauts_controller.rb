@@ -4,6 +4,14 @@
 class AstronautsController < ApplicationController
   before_action :fetch_astronaut, only: %i[show edit update destroy]
 
+  def fetch_astronaut
+    @astronaut = Astronaut.find(params[:id])
+  end
+
+  def astronaut_parameters
+    params.require(:astronaut).permit(:name, :mail, :grade)
+  end
+
   def index
     @astronauts = Astronaut.all
   end
@@ -13,7 +21,7 @@ class AstronautsController < ApplicationController
   end
 
   def create
-    @astronaut = Astronaut.new(params.require(:astronaut).permit(:name, :mail, :grade_id))
+    @astronaut = Astronaut.new astronaut_parameters
     @astronaut.grade = Grade.create(name: 'TEST', description: 'TEST', alias: 'LE TEST')
     if @astronaut.save
       redirect_to astronauts_url
@@ -29,7 +37,7 @@ class AstronautsController < ApplicationController
   end
 
   def update
-    if @astronaut.update_attributes params.require(:astronaut).permit(:name, :mail)
+    if @astronaut.update_attributes astronaut_parameters
       flash[:success] = 'Astronaut #' + params[:id] + ' updated !'
 
       redirect_to astronaut_path @astronaut
@@ -42,10 +50,5 @@ class AstronautsController < ApplicationController
     @astronaut.destroy
 
     flash[:success] = 'Astronaut #' + params[:id] + ' destroyed !'
-  end
-
-
-  def fetch_astronaut
-    @astronaut = Astronaut.find(params[:id])
   end
 end
