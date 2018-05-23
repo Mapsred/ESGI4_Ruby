@@ -4,6 +4,10 @@
 class PlanetsController < ApplicationController
   before_action :fetch_planet, only: %i[show edit update destroy]
 
+  def fetch_planet
+    @planet = Planet.find(params[:id])
+  end
+
   def index
     @planets = Planet.all
   end
@@ -21,7 +25,7 @@ class PlanetsController < ApplicationController
   end
 
   def update
-    if @planet.update_attributes params.require(:planet).permit(:name, :description)
+    if @planet.update_attributes planet_attributes
       flash[:success] = 'Planet #' + params[:id] + ' updated !'
 
       redirect_to planet_path @planet
@@ -37,7 +41,7 @@ class PlanetsController < ApplicationController
   end
 
   def create
-    @planet = Planet.new(params.require(:planet).permit(:name, :description))
+    @planet = Planet.new planet_attributes
     if @planet.save
       redirect_to planets_url
     else
@@ -45,7 +49,7 @@ class PlanetsController < ApplicationController
     end
   end
 
-  def fetch_planet
-    @planet = Planet.find(params[:id])
+  def planet_attributes
+    params.require(:planet).permit(:name, :description)
   end
 end
