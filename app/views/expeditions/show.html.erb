@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Astronaut:</strong>
+  <%= @expedition.astronaut %>
+</p>
+
+<p>
+  <strong>Planet:</strong>
+  <%= @expedition.planet %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @expedition.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @expedition.end_date %>
+</p>
+
+<%= link_to 'Edit', edit_expedition_path(@expedition) %> |
+<%= link_to 'Back', expeditions_path %>

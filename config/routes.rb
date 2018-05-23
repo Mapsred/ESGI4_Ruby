@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   # Routes for astronauts
   resources :astronauts
 
+  # Routes for expeditions
+  resources :expeditions
 end

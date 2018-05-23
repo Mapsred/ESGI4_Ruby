@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_23_160044) do
+ActiveRecord::Schema.define(version: 2018_05_23_163434) do
 
   create_table "astronauts", force: :cascade do |t|
     t.string "name"
@@ -21,6 +21,17 @@ ActiveRecord::Schema.define(version: 2018_05_23_160044) do
     t.integer "planet_id"
     t.index ["grade_id"], name: "index_astronauts_on_grade_id"
     t.index ["planet_id"], name: "index_astronauts_on_planet_id"
+  end
+
+  create_table "expeditions", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "astronaut_id"
+    t.integer "planet_id"
+    t.index ["astronaut_id"], name: "index_expeditions_on_astronaut_id"
+    t.index ["planet_id"], name: "index_expeditions_on_planet_id"
   end
 
   create_table "grades", force: :cascade do |t|
