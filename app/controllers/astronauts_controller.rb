@@ -9,7 +9,7 @@ class AstronautsController < ApplicationController
   end
 
   def astronaut_parameters
-    params.require(:astronaut).permit(:name, :mail, :grade)
+    params.require(:astronaut).permit(:name, :mail, :grade_id, :planet_id)
   end
 
   def index
@@ -22,7 +22,6 @@ class AstronautsController < ApplicationController
 
   def create
     @astronaut = Astronaut.new astronaut_parameters
-    @astronaut.grade = Grade.create(name: 'TEST', description: 'TEST', alias: 'LE TEST')
     if @astronaut.save
       redirect_to astronauts_url
     else

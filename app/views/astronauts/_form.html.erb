@@ -32,6 +32,13 @@
                           input_html: { :class => 'form-control' } %>
       </div>
     </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label"><%= f.label :planet %></label>
+      <div class="col-sm-5">
+        <%= f.association :planet, :required => true, prompt: 'Choose your planet', label: false,
+                          input_html: { :class => 'form-control' } %>
+      </div>
+    </div>
 
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
