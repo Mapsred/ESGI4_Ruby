@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 2018_05_22_101955) do
     t.string "mail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "grade"
-    t.index ["grade"], name: "index_astronauts_on_grade"
+    t.integer "grade_id"
+    t.index ["grade_id"], name: "index_astronauts_on_grade_id"
   end
 
   create_table "grades", force: :cascade do |t|

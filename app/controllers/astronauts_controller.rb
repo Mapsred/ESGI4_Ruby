@@ -13,7 +13,8 @@ class AstronautsController < ApplicationController
   end
 
   def create
-    @astronaut = Astronaut.new(params.require(:astronaut).permit(:name, :mail, :grade))
+    @astronaut = Astronaut.new(params.require(:astronaut).permit(:name, :mail, :grade_id))
+    @astronaut.grade = Grade.create(name: 'TEST', description: 'TEST', alias: 'LE TEST')
     if @astronaut.save
       redirect_to astronauts_url
     else
@@ -28,7 +29,7 @@ class AstronautsController < ApplicationController
   end
 
   def update
-    if @astronaut.update_attributes params.require(:astronaut).permit(:name, :mail, :grade)
+    if @astronaut.update_attributes params.require(:astronaut).permit(:name, :mail)
       flash[:success] = 'Astronaut #' + params[:id] + ' updated !'
 
       redirect_to astronaut_path @astronaut
