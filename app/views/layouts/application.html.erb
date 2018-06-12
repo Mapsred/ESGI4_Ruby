@@ -38,6 +38,10 @@
           <%= link_to "Grades", grades_path %>
         </li>
 
+        <li class="<%= 'active' if params[:controller] == 'reports' %>">
+          <%= link_to "Reports", reports_path %>
+        </li>
+
       </ul>
     </div>
   </div>
