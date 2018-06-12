@@ -1,13 +1,16 @@
+# frozen_string_literal: true
+
 class ExpeditionsController < ApplicationController
   before_action :set_expedition, only: %i[show edit update destroy]
 
-# Use callbacks to share common setup or constraints between actions.
+  # Use callbacks to share common setup or constraints between actions.
   private def set_expedition
     @expedition = Expedition.find(params[:id])
   end
 
-# Never trust parameters from the scary internet, only allow the white list through.
+  # Never trust parameters from the scary internet, only allow the white list through.
   private def expedition_params
+    puts expedition_params[:start_date]
     params.require(:expedition).permit(:astronaut, :planet, :start_date, :end_date)
   end
 
@@ -15,15 +18,13 @@ class ExpeditionsController < ApplicationController
     @expeditions = Expedition.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @expedition = Expedition.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @expedition = Expedition.new(expedition_params)
@@ -50,6 +51,4 @@ class ExpeditionsController < ApplicationController
     redirect_to expeditions_url, notice: 'Expedition was successfully destroyed.'
     head :no_content
   end
-
 end
-
