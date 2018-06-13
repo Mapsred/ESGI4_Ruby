@@ -12,6 +12,7 @@
         <tr>
           <th>ID</th>
           <th>Nom</th>
+          <th>Grade</th>
           <th>
             <div class="col-md-2 col-md-offset-10">Action</div>
           </th>
@@ -22,6 +23,13 @@
           <tr>
             <td><%= astronaut.id %></td>
             <td><%= astronaut.name %></td>
+            <td>
+              <% if astronaut.grade.name.nil? %>
+                &empty;
+              <% else %>
+                <%= astronaut.grade.name %>
+              <% end %>
+            </td>
             <td>
               <div class="btn-group pull-right">
                 <a href="<%= astronaut_path astronaut %>" class="btn btn-success">

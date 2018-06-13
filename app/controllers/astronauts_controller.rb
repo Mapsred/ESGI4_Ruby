@@ -13,7 +13,7 @@ class AstronautsController < ApplicationController
   end
 
   def index
-    @astronauts = Astronaut.all
+    @astronauts = Astronaut.includes(:grade)
   end
 
   def new
