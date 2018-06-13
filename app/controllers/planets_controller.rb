@@ -3,6 +3,7 @@
 # Planet Controller
 class PlanetsController < ApplicationController
   before_action :fetch_planet, only: %i[show edit update destroy]
+  before_action :authenticate_user!, only: %i[new edit update destroy]
 
   def fetch_planet
     @planet = Planet.find(params[:id])

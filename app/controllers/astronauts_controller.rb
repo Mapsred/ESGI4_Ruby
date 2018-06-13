@@ -3,6 +3,7 @@
 # Astronaut Controller
 class AstronautsController < ApplicationController
   before_action :fetch_astronaut, only: %i[show edit update destroy]
+  before_action :authenticate_user!, only: %i[new edit update destroy]
 
   def fetch_astronaut
     @astronaut = Astronaut.find(params[:id])
@@ -13,7 +14,7 @@ class AstronautsController < ApplicationController
   end
 
   def index
-    @astronauts = Astronaut.all
+    @astronauts = Astronaut.includes(:grade, :planet)
   end
 
   def new
