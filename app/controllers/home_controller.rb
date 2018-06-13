@@ -3,6 +3,6 @@
 # HomeController
 class HomeController < ApplicationController
   def index
-    @expedition = Expedition.order('created_at').last
+    @expedition = Expedition.last_opened
   end
 end

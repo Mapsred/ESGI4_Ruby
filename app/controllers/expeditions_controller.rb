@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
+#ExpeditionController
 class ExpeditionsController < ApplicationController
   before_action :set_expedition, only: %i[show edit update destroy]
+  before_action :expedition_in_progress, only: %i[new create]
 
   # Use callbacks to share common setup or constraints between actions.
   private def set_expedition
@@ -13,17 +15,30 @@ class ExpeditionsController < ApplicationController
     params.require(:expedition).permit(:astronaut, :planet_id, :start_date, :end_date, astronaut_ids: [])
   end
 
+  private def expedition_in_progress
+    expedition = Expedition.last_opened
+    return if expedition.nil?
+
+    flash[:danger] = 'Une expédition est en cours et se finira le ' + expedition.end_date.to_s
+
+    redirect_to home_path
+  end
+
   def index
     @expeditions = Expedition.all
   end
 
-  def show; end
+  def show
+    # @expedition fetched from :fetch_expedition
+  end
 
   def new
     @expedition = Expedition.new
   end
 
-  def edit; end
+  def edit
+    # @expedition fetched from :fetch_expedition
+  end
 
   def create
     @expedition = Expedition.new(expedition_params)
