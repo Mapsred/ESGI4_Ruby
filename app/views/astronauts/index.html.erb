@@ -25,18 +25,27 @@
             <td><%= astronaut.id %></td>
             <td><%= astronaut.name %></td>
             <td>
-              <% if astronaut.grade.name.nil? %>
+              <% if astronaut.grade.nil? %>
                 &empty;
               <% else %>
-                <%= astronaut.grade.name %>
+                <% if astronaut.grade.name.nil? %>
+                  &empty;
+                <% else %>
+                  <%= astronaut.grade.name %>
+                <% end %>
               <% end %>
             </td>
             <td>
-              <% if astronaut.planet.name.nil? %>
+              <% if astronaut.planet.nil? %>
                 &empty;
               <% else %>
-                <%= astronaut.planet.name %>
+                <% if astronaut.planet.name.nil? %>
+                  &empty;
+                <% else %>
+                  <%= astronaut.planet.name %>
+                <% end %>
               <% end %>
+
             </td>
             <td>
               <div class="btn-group pull-right">
