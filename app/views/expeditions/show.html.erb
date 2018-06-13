@@ -1,13 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Astronaut:</strong>
-  <%= @expedition.astronaut %>
+  <strong>Astronauts:</strong>
+  <%= render 'astronauts/astronaut_list', astronauts: @expedition.astronauts %>
+
 </p>
 
 <p>
   <strong>Planet:</strong>
-  <%= @expedition.planet %>
+  <%= @expedition.planet.name %>
 </p>
 
 <p>

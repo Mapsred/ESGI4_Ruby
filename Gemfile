@@ -67,3 +67,6 @@ gem 'simple_form'
 
 gem 'momentjs-rails'
 gem 'bootstrap-daterangepicker-rails', '~> 3.0', '>= 3.0.3'
+
+gem "select2-rails"
+

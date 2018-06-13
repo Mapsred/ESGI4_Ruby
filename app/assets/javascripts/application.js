@@ -5,6 +5,8 @@
 //= require turbolinks
 //= require moment
 //= require daterangepicker
+//= require select2
+//= require select2_locale_fr
 
 
 $(document).ready(function () {
@@ -54,4 +56,14 @@ $(document).ready(function () {
         }
     });
 
+    $('[data-provider="select2"]').select2({
+        theme: "bootstrap",
+        language: "fr"
+    });
+
+    $('[data-provider="select2-multiple"]').select2({
+        theme: "bootstrap",
+        language: "fr",
+        multiple: true,
+    });
 });

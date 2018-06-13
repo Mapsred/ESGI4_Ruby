@@ -10,8 +10,7 @@ class ExpeditionsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   private def expedition_params
-    puts expedition_params[:start_date]
-    params.require(:expedition).permit(:astronaut, :planet, :start_date, :end_date)
+    params.require(:expedition).permit(:astronaut, :planet_id, :start_date, :end_date, astronaut_ids: [])
   end
 
   def index
@@ -30,8 +29,7 @@ class ExpeditionsController < ApplicationController
     @expedition = Expedition.new(expedition_params)
 
     if @expedition.save
-      redirect_to @expedition, notice: 'Expedition was successfully created.'
-      render :show, status: :created, location: @expedition
+      redirect_to expedition_path @expedition
     else
       render :new
     end
@@ -39,8 +37,9 @@ class ExpeditionsController < ApplicationController
 
   def update
     if @expedition.update(expedition_params)
-      redirect_to @expedition, notice: 'Expedition was successfully updated.'
-      render :show, status: :ok, location: @expedition
+      flash[:success] = 'Expedition #' + params[:id] + ' updated !'
+
+      redirect_to expedition_path @expedition
     else
       render :edit
     end
