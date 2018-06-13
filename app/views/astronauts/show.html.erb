@@ -3,12 +3,11 @@
     Retour</a>
   <h3>
     <% if @astronaut.grade.name.nil? %>
-      &empty;
+      <%= @astronaut.name %>
     <% else %>
       <%= image_tag("icon/icons8-caporal-50.png", :alt => "grade major") %>
-      <%= @astronaut.grade.name %>
+      <%= grade_user(@astronaut.name, @astronaut.grade.name) %>
     <% end %>
-    <%= @astronaut.name %>
   </h3>
 </div>
 
