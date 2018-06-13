@@ -5,3 +5,19 @@
 @import "select2";
 @import "select2-bootstrap";
 
+
+body{
+  color: white;
+  font-family: helvetica, verdana, arial, sans-serif;
+  font-size: 13px;
+  background: #fff image-url('background.jpg') no-repeat;
+  background-size: 100%;
+}
+
+h1{
+  text-align: center;
+}
+
+.well{
+  background-color: rgba(0, 0, 0, 0);
+}

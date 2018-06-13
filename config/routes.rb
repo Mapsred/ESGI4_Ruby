@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users
+  resources :reports
   root 'home#index', as: 'home'
 
   # Routes for planets
