@@ -2,7 +2,7 @@
   <a class="btn btn-primary btn-sm" href="<%= astronauts_path %>"><span class="glyphicon glyphicon-chevron-left"></span>
     Retour</a>
   <h3>
-    <% if @astronaut.grade.name.nil? %>
+    <% if @astronaut.grade.nil? %>
       <%= @astronaut.name %>
     <% else %>
       <%= image_tag("icon/icons8-caporal-50.png", :alt => "grade major") %>
@@ -13,13 +13,33 @@
 
 <div class="well">
   <div class="row">
+
     <div class="col-md-12">
       <label class="col-sm-2">Nom</label>
+      <% if @astronaut.name.nil? %>
+        <span>UNKNOWN</span>
+      <% else %>
       <span><%= @astronaut.name %></span>
+      <% end %>
     </div>
+
     <div class="col-md-12">
       <label class="col-sm-2">Mail</label>
+      <% if @astronaut.mail.nil? %>
+        <span>UNKNOWN</span>
+      <% else %>
       <span><%= @astronaut.mail %></span>
+      <% end %>
     </div>
+
+    <div class="col-md-12">
+      <label class="col-sm-2">Planet</label>
+      <% if @astronaut.planet.nil? %>
+        <span>UNKNOWN</span>
+      <% else %>
+        <span><%= @astronaut.planet.name %></span>
+      <% end %>
+    </div>
+
   </div>
 </div>
