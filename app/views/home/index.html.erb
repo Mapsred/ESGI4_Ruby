@@ -3,12 +3,11 @@
   <%= Rails.application.class.parent_name %> !
 </h1>
 
-<% if @expedition.nil? %>
+<% if @expedition.any? %>
+  <p>Une expédition est en cours jusqu'au <%= @expedition.end_date.to_formatted_s('%B %d %Y') %></p>
+<% else %>
   <p>Aucune expédition en cours, vous pouvez en démarrer une ici : </p>
   <a href="<%= new_expedition_path %>" type="button" class="btn btn-default">
     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajouter une expédition
   </a>
-
-<% else %>
-  <p>Une expédition est en cours jusqu'au <%= @expedition.end_date.to_formatted_s('%B %d %Y') %></p>
 <% end %>

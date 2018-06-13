@@ -17,7 +17,8 @@ class ExpeditionsController < ApplicationController
 
   private def expedition_in_progress
     expedition = Expedition.last_opened
-    return if expedition.nil?
+
+    return nil unless expedition.any?
 
     flash[:danger] = 'Une expédition est en cours et se finira le ' + expedition.end_date.to_s
 
