@@ -13,6 +13,7 @@
           <th>ID</th>
           <th>Nom</th>
           <th>Grade</th>
+          <th>Planet</th>
           <th>
             <div class="col-md-2 col-md-offset-10">Action</div>
           </th>
@@ -28,6 +29,13 @@
                 &empty;
               <% else %>
                 <%= astronaut.grade.name %>
+              <% end %>
+            </td>
+            <td>
+              <% if astronaut.planet.name.nil? %>
+                &empty;
+              <% else %>
+                <%= astronaut.planet.name %>
               <% end %>
             </td>
             <td>
