@@ -65,6 +65,10 @@ gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'simple_form'
 
+gem 'momentjs-rails'
+gem 'bootstrap-daterangepicker-rails', '~> 3.0', '>= 3.0.3'
+gem 'select2-rails'
+
 # Devise
 gem 'devise'
 gem 'devise-i18n'

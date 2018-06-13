@@ -1,0 +1,7 @@
+<% if astronauts.any? %>
+  <% astronauts.each do |m| %>
+    <%= link_to m.name, m %>
+  <% end %>
+<% else %>
+  &empty;
+<% end %>

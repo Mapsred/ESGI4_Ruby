@@ -1,16 +1,37 @@
+<%= simple_form_for(@expedition) do |form| %>
+  <%= form.error_notification %>
+  <%= form.error_notification message: form.object.errors[:base].to_sentence if form.object.errors[:base].present? %>
 
-<%= simple_form_for(@expedition) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+  <div class="row">
+    <div class="form-group col-lg-5">
+      <%= form.label :start_date, label: 'Date de début' %>
+      <%= form.text_field :start_date, class: 'form-control', data: { provider: 'daterange' } %>
+    </div>
 
-  <div class="form-inputs">
-    <%= f.input :astronaut %>
-    <%= f.input :planet %>
-    <%= f.input :start_date %>
-    <%= f.input :end_date %>
+    <div class="form-group col-lg-5">
+      <%= form.label :start_date, label: 'Date de fin' %>
+      <%= form.text_field :end_date, class: 'form-control', data: { provider: 'datepicker' } %>
+    </div>
+
+    <div class="form-group col-lg-5">
+      <%= form.association :astronauts, label: 'Astronautes', include_blank: false, include_hidden: false, class: 'form-control',
+                           :input_html => {
+                               multiple: 'multiple',
+                               data: { provider: 'select2-multiple', placeholder: 'Choose an Astronaut' }
+                           }
+      %>
+
+    </div>
+
+    <div class="form-group col-lg-5">
+      <%= form.association :planet, label: 'Planete', class: 'form-control', :input_html => {
+          data: {
+              provider: 'select2',
+              placeholder: 'Choose a Planet'
+          }
+      } %>
+    </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+  <%= form.submit 'Enregistrer', class: 'btn btn-primary' %>
 <% end %>
