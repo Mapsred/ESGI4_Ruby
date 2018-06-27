@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
-# Planet Model
+# Planet
 class Planet < ApplicationRecord
   has_many :astronaut
   has_many :expeditions
-
 end
