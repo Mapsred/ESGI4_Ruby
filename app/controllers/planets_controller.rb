@@ -12,7 +12,7 @@ class PlanetsController < ApplicationController
   def create
     @planet = Planet.new planet_attributes
     if @planet.save
-      flash[:success] = 'Planet "' + params[:name] + '" created !'
+      flash[:success] = 'Planet "' + planet_attributes[:name] + '" created !'
 
       redirect_to planets_url
     else
@@ -34,7 +34,7 @@ class PlanetsController < ApplicationController
 
   def update
     if @planet.update_attributes planet_attributes
-      flash[:success] = 'Planet #' + params[:id] + ' updated !'
+      flash[:success] = 'Planet #' + planet_attributes[:id] + ' updated !'
 
       redirect_to planet_path @planet
     else
@@ -45,7 +45,7 @@ class PlanetsController < ApplicationController
   def destroy
     @planet.destroy
 
-    flash[:success] = 'Planet #' + params[:id] + ' destroyed !'
+    flash[:success] = 'Planet #' + planet_attributes[:id] + ' destroyed !'
   end
 
   private

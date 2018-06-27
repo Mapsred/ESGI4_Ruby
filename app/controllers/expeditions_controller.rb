@@ -36,7 +36,7 @@ class ExpeditionsController < ApplicationController
 
   def update
     if @expedition.update(expedition_params)
-      flash[:success] = 'Expedition #' + params[:id] + ' updated !'
+      flash[:success] = 'Expedition #' + expedition_params[:id] + ' updated !'
 
       redirect_to expedition_path @expedition
     else
@@ -46,7 +46,7 @@ class ExpeditionsController < ApplicationController
 
   def destroy
     @expedition.destroy
-    flash[:success] = 'Expedition "' + params[:id] + '" destroyed !'
+    flash[:success] = 'Expedition "' + expedition_params[:id] + '" destroyed !'
 
     redirect_to expeditions_url
     head :no_content
@@ -67,10 +67,10 @@ class ExpeditionsController < ApplicationController
   def expedition_in_progress
     expedition = Expedition.last_opened
 
-    # return nil unless expedition.present?
+    return nil unless expedition.present?
 
-    # flash[:danger] = 'An expedition is in progress and will end the ' + expedition.end_date.to_s
+    flash[:danger] = 'An expedition is in progress and will end the ' + expedition.end_date.to_s
 
-    # redirect_to home_path
+    redirect_to home_path
   end
 end

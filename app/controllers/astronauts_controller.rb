@@ -12,7 +12,7 @@ class AstronautsController < ApplicationController
   def create
     @astronaut = Astronaut.new astronaut_parameters
     if @astronaut.save
-      flash[:success] = 'Astronaut "' + params[:name] + '" created !'
+      flash[:success] = 'Astronaut "' + astronaut_parameters[:name] + '" created !'
 
       redirect_to astronauts_url
     else
@@ -30,7 +30,7 @@ class AstronautsController < ApplicationController
 
   def update
     if @astronaut.update_attributes astronaut_parameters
-      flash[:success] = 'Astronaut #' + params[:id] + ' updated !'
+      flash[:success] = 'Astronaut #' + astronaut_parameters[:id] + ' updated !'
 
       redirect_to astronaut_path @astronaut
     else
@@ -45,7 +45,7 @@ class AstronautsController < ApplicationController
   def destroy
     @astronaut.destroy
 
-    flash[:success] = 'Astronaut #' + params[:id] + ' destroyed !'
+    flash[:success] = 'Astronaut #' + astronaut_parameters[:id] + ' destroyed !'
   end
 
   private
