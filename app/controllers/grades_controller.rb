@@ -6,27 +6,33 @@ class GradesController < ApplicationController
     @grades = Grade.all
   end
 
-  def show; end
+  def show
+    # @grade fetched from :set_grade
+  end
 
   def new
     @grade = Grade.new
   end
 
   def create
-    @grade = Grade.new(
-        grade_params
-    )
+    @grade = Grade.new grade_params
     if @grade.save
+      flash[:success] = 'Grade "' + report_params[:name] + '" created !'
+
       redirect_to @grade
     else
       render 'new'
     end
   end
 
-  def edit; end
+  def edit
+    # @grade fetched from :set_grade
+  end
 
   def update
     if @grade.update(grade_params)
+      flash[:success] = 'Grade "' + report_params[:id] + '" updated !'
+
       redirect_to @grade
     else
       render 'edit'
@@ -35,6 +41,9 @@ class GradesController < ApplicationController
 
   def destroy
     @grade.destroy
+
+    flash[:success] = 'Grade "' + report_params[:id] + '" destroyed !'
+
     redirect_to grades_url
   end
 

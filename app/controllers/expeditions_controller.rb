@@ -46,6 +46,8 @@ class ExpeditionsController < ApplicationController
     @expedition = Expedition.new(expedition_params)
 
     if @expedition.save
+      flash[:success] = 'Expedition "' + report_params[:id] + '" created !'
+
       redirect_to expedition_path @expedition
     else
       render :new
@@ -64,7 +66,9 @@ class ExpeditionsController < ApplicationController
 
   def destroy
     @expedition.destroy
-    redirect_to expeditions_url, notice: 'Expedition was successfully destroyed.'
+    flash[:success] = 'Expedition "' + report_params[:id] + '" destroyed !'
+
+    redirect_to expeditions_url
     head :no_content
   end
 end

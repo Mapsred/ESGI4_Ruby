@@ -24,16 +24,20 @@ class AstronautsController < ApplicationController
   def create
     @astronaut = Astronaut.new astronaut_parameters
     if @astronaut.save
+      flash[:success] = 'Astronaut "' + report_params[:name] + '" created !'
+
       redirect_to astronauts_url
     else
       render action: 'new'
     end
   end
 
-  def show;
+  def show
+    # @astronaut fetched from :fetch_astronaut
   end
 
-  def edit;
+  def edit
+    # @astronaut fetched from :fetch_astronaut
   end
 
   def update
