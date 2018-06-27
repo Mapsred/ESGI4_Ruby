@@ -69,6 +69,8 @@ gem 'momentjs-rails'
 gem 'bootstrap-daterangepicker-rails', '~> 3.0', '>= 3.0.3'
 gem 'select2-rails'
 
+gem 'jquery-datatables-rails', '~> 3.4.0'
+
 # Devise
 gem 'devise'
 gem 'devise-i18n'
