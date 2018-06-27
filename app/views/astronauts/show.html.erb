@@ -1,6 +1,6 @@
 <div class="nav-header">
   <a class="btn btn-primary btn-sm" href="<%= astronauts_path %>"><span class="glyphicon glyphicon-chevron-left"></span>
-    Retour</a>
+    Back</a>
   <h3>
     <% if @astronaut.grade.nil? %>
       <%= @astronaut.name %>
@@ -15,30 +15,18 @@
   <div class="row">
 
     <div class="col-md-12">
-      <label class="col-sm-2">Nom</label>
-      <% if @astronaut.name.nil? %>
-        <span>UNKNOWN</span>
-      <% else %>
-      <span><%= @astronaut.name %></span>
-      <% end %>
+      <label class="col-sm-2">Name</label>
+      <span><%= @astronaut.name.nil? ? '&empty;' : @astronaut.name %></span>
     </div>
 
     <div class="col-md-12">
       <label class="col-sm-2">Mail</label>
-      <% if @astronaut.mail.nil? %>
-        <span>UNKNOWN</span>
-      <% else %>
-      <span><%= @astronaut.mail %></span>
-      <% end %>
+      <span><%= @astronaut.mail.nil? ? '&empty;' : @astronaut.mail %></span>
     </div>
 
     <div class="col-md-12">
       <label class="col-sm-2">Planet</label>
-      <% if @astronaut.planet.nil? %>
-        <span>UNKNOWN</span>
-      <% else %>
-        <span><%= @astronaut.planet.name %></span>
-      <% end %>
+      <span><%= @astronaut.planet.nil? ? '&empty;' : @astronaut.planet.name %></span>
     </div>
 
   </div>

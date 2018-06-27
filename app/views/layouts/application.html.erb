@@ -28,11 +28,11 @@
         </li>
 
         <li class="<%= 'active' if params[:controller] == 'planets' %>">
-          <%= link_to "Planètes", planets_path %>
+          <%= link_to "Planets", planets_path %>
         </li>
 
         <li class="<%= 'active' if params[:controller] == 'astronauts' %>">
-          <%= link_to "Astronautes", astronauts_path %>
+          <%= link_to "Astronauts", astronauts_path %>
         </li>
 
         <li class="<%= 'active' if params[:controller] == 'grades' %>">
@@ -46,7 +46,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
-          <li><%= link_to 'Se déconnecter',
+          <li><%= link_to 'Disconnect',
                           destroy_user_session_path,
                           method: :delete
           %></li>
@@ -54,7 +54,7 @@
             <p class="navbar-text"><%= current_user.email %></p>
           </li>
         <% else %>
-          <li><%= link_to 'Se connecter', new_user_session_path %></li>
+          <li><%= link_to 'Connect', new_user_session_path %></li>
         <% end %>
       </ul>
     </div>
