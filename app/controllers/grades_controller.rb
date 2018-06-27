@@ -9,7 +9,7 @@ class GradesController < ApplicationController
   def create
     @grade = Grade.new grade_params
     if @grade.save
-      flash[:success] = 'Grade "' + report_params[:name] + '" created !'
+      flash[:success] = 'Grade "' + params[:name] + '" created !'
 
       redirect_to @grade
     else
@@ -31,7 +31,7 @@ class GradesController < ApplicationController
 
   def update
     if @grade.update(grade_params)
-      flash[:success] = 'Grade "' + report_params[:id] + '" updated !'
+      flash[:success] = 'Grade "' + params[:id] + '" updated !'
 
       redirect_to @grade
     else
@@ -42,7 +42,7 @@ class GradesController < ApplicationController
   def destroy
     @grade.destroy
 
-    flash[:success] = 'Grade "' + report_params[:id] + '" destroyed !'
+    flash[:success] = 'Grade "' + params[:id] + '" destroyed !'
 
     redirect_to grades_url
   end

@@ -13,7 +13,7 @@ class ReportsController < ApplicationController
     @report = Report.new(report_params)
     report_params.inspect
     if @report.save
-      flash[:success] = 'Report "' + report_params[:name] + '" created !'
+      flash[:success] = 'Report "' + params[:name] + '" created !'
 
       redirect_to reports_url
     else
@@ -35,7 +35,7 @@ class ReportsController < ApplicationController
 
   def update
     if @report.update(report_params)
-      flash[:success] = 'Report "' + report_params[:id] + '" updated !'
+      flash[:success] = 'Report "' + params[:id] + '" updated !'
       redirect_to reports_url
     else
       render :edit
@@ -44,7 +44,7 @@ class ReportsController < ApplicationController
 
   def destroy
     @report.destroy
-    flash[:success] = 'Report "' + report_params[:id] + '" destroyed !'
+    flash[:success] = 'Report "' + params[:id] + '" destroyed !'
 
     redirect_to reports_url
   end

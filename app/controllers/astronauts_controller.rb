@@ -12,7 +12,7 @@ class AstronautsController < ApplicationController
   def create
     @astronaut = Astronaut.new astronaut_parameters
     if @astronaut.save
-      flash[:success] = 'Astronaut "' + report_params[:name] + '" created !'
+      flash[:success] = 'Astronaut "' + params[:name] + '" created !'
 
       redirect_to astronauts_url
     else

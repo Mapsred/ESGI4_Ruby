@@ -12,7 +12,7 @@ class PlanetsController < ApplicationController
   def create
     @planet = Planet.new planet_attributes
     if @planet.save
-      flash[:success] = 'Planet "' + report_params[:name] + '" created !'
+      flash[:success] = 'Planet "' + params[:name] + '" created !'
 
       redirect_to planets_url
     else
