@@ -5,16 +5,19 @@ class PlanetsController < ApplicationController
   before_action :fetch_planet, only: %i[show edit update destroy]
   before_action :authenticate_user!, only: %i[new edit update destroy]
 
-  def fetch_planet
-    @planet = Planet.find(params[:id])
-  end
-
   def index
     @planets = Planet.all
   end
 
-  def show
-    # @planet fetched from :fetch_planet
+  def create
+    @planet = Planet.new planet_attributes
+    if @planet.save
+      flash[:success] = 'Planet "' + report_params[:name] + '" created !'
+
+      redirect_to planets_url
+    else
+      render action: 'new'
+    end
   end
 
   def new
@@ -22,6 +25,10 @@ class PlanetsController < ApplicationController
   end
 
   def edit
+    # @planet fetched from :fetch_planet
+  end
+
+  def show
     # @planet fetched from :fetch_planet
   end
 
@@ -41,18 +48,13 @@ class PlanetsController < ApplicationController
     flash[:success] = 'Planet #' + params[:id] + ' destroyed !'
   end
 
-  def create
-    @planet = Planet.new planet_attributes
-    if @planet.save
-      flash[:success] = 'Planet "' + report_params[:name] + '" created !'
-
-      redirect_to planets_url
-    else
-      render action: 'new'
-    end
-  end
+  private
 
   def planet_attributes
     params.require(:planet).permit(:name, :description)
+  end
+
+  def fetch_planet
+    @planet = Planet.find(params[:id])
   end
 end

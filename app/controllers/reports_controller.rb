@@ -1,21 +1,12 @@
+# frozen_string_literal: true
+
+# ReportsController
 class ReportsController < ApplicationController
   before_action :set_report, only: %i[show edit update destroy]
   before_action :authenticate_user!, only: %i[new edit update destroy]
 
   def index
     @reports = Report.all
-  end
-
-  def show
-    # @report fetched from :set_report
-  end
-
-  def new
-    @report = Report.new
-  end
-
-  def edit
-    # @report fetched from :set_report
   end
 
   def create
@@ -28,6 +19,18 @@ class ReportsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def new
+    @report = Report.new
+  end
+
+  def edit
+    # @report fetched from :set_report
+  end
+
+  def show
+    # @report fetched from :set_report
   end
 
   def update

@@ -6,14 +6,6 @@ class GradesController < ApplicationController
     @grades = Grade.all
   end
 
-  def show
-    # @grade fetched from :set_grade
-  end
-
-  def new
-    @grade = Grade.new
-  end
-
   def create
     @grade = Grade.new grade_params
     if @grade.save
@@ -25,7 +17,15 @@ class GradesController < ApplicationController
     end
   end
 
+  def new
+    @grade = Grade.new
+  end
+
   def edit
+    # @grade fetched from :set_grade
+  end
+
+  def show
     # @grade fetched from :set_grade
   end
 

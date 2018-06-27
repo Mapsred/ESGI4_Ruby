@@ -5,20 +5,8 @@ class AstronautsController < ApplicationController
   before_action :fetch_astronaut, only: %i[show edit update destroy]
   before_action :authenticate_user!, only: %i[new edit update destroy]
 
-  def fetch_astronaut
-    @astronaut = Astronaut.find(params[:id])
-  end
-
-  def astronaut_parameters
-    params.require(:astronaut).permit(:name, :mail, :grade_id, :planet_id)
-  end
-
   def index
     @astronauts = Astronaut.includes(:grade, :planet)
-  end
-
-  def new
-    @astronaut = Astronaut.new
   end
 
   def create
@@ -32,11 +20,11 @@ class AstronautsController < ApplicationController
     end
   end
 
-  def show
-    # @astronaut fetched from :fetch_astronaut
+  def new
+    @astronaut = Astronaut.new
   end
 
-  def edit
+  def show
     # @astronaut fetched from :fetch_astronaut
   end
 
@@ -50,9 +38,24 @@ class AstronautsController < ApplicationController
     end
   end
 
+  def edit
+    # @astronaut fetched from :fetch_astronaut
+  end
+
   def destroy
     @astronaut.destroy
 
     flash[:success] = 'Astronaut #' + params[:id] + ' destroyed !'
   end
+
+  private
+
+  def fetch_astronaut
+    @astronaut = Astronaut.find(params[:id])
+  end
+
+  def astronaut_parameters
+    params.require(:astronaut).permit(:name, :mail, :grade_id, :planet_id)
+  end
+
 end
