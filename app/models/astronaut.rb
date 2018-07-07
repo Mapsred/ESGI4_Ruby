@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Astronaut
 class Astronaut < ApplicationRecord
   belongs_to :grade
   belongs_to :planet

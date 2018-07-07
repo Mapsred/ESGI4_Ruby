@@ -5,6 +5,51 @@ class AstronautsController < ApplicationController
   before_action :fetch_astronaut, only: %i[show edit update destroy]
   before_action :authenticate_user!, only: %i[new edit update destroy]
 
+  def index
+    @astronauts = Astronaut.includes(:grade, :planet)
+  end
+
+  def create
+    @astronaut = Astronaut.new astronaut_parameters
+    if @astronaut.save
+      flash[:success] = 'Astronaut "' + astronaut_parameters[:name] + '" created !'
+
+      redirect_to astronauts_url
+    else
+      render action: 'new'
+    end
+  end
+
+  def new
+    @astronaut = Astronaut.new
+  end
+
+  def show
+    # @astronaut fetched from :fetch_astronaut
+  end
+
+  def update
+    if @astronaut.update_attributes astronaut_parameters
+      flash[:success] = 'Astronaut #' + astronaut_parameters[:id] + ' updated !'
+
+      redirect_to astronaut_path @astronaut
+    else
+      render action: :edit
+    end
+  end
+
+  def edit
+    # @astronaut fetched from :fetch_astronaut
+  end
+
+  def destroy
+    @astronaut.destroy
+
+    flash[:success] = 'Astronaut #' + astronaut_parameters[:id] + ' destroyed !'
+  end
+
+  private
+
   def fetch_astronaut
     @astronaut = Astronaut.find(params[:id])
   end
@@ -13,42 +58,4 @@ class AstronautsController < ApplicationController
     params.require(:astronaut).permit(:name, :mail, :grade_id, :planet_id)
   end
 
-  def index
-    @astronauts = Astronaut.includes(:grade, :planet)
-  end
-
-  def new
-    @astronaut = Astronaut.new
-  end
-
-  def create
-    @astronaut = Astronaut.new astronaut_parameters
-    if @astronaut.save
-      redirect_to astronauts_url
-    else
-      render action: 'new'
-    end
-  end
-
-  def show;
-  end
-
-  def edit;
-  end
-
-  def update
-    if @astronaut.update_attributes astronaut_parameters
-      flash[:success] = 'Astronaut #' + params[:id] + ' updated !'
-
-      redirect_to astronaut_path @astronaut
-    else
-      render action: :edit
-    end
-  end
-
-  def destroy
-    @astronaut.destroy
-
-    flash[:success] = 'Astronaut #' + params[:id] + ' destroyed !'
-  end
 end

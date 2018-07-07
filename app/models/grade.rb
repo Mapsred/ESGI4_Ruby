@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Grade Model
+# Grade
 class Grade < ApplicationRecord
   has_many :astronaut
 end

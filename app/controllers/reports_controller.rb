@@ -1,12 +1,24 @@
+# frozen_string_literal: true
+
+# ReportsController
 class ReportsController < ApplicationController
-  before_action :set_report, only: [:show, :edit, :update, :destroy]
+  before_action :set_report, only: %i[show edit update destroy]
   before_action :authenticate_user!, only: %i[new edit update destroy]
 
   def index
     @reports = Report.all
   end
 
-  def show
+  def create
+    @report = Report.new(report_params)
+    report_params.inspect
+    if @report.save
+      flash[:success] = 'Report "' + report_params[:name] + '" created !'
+
+      redirect_to reports_url
+    else
+      render :new
+    end
   end
 
   def new
@@ -14,22 +26,16 @@ class ReportsController < ApplicationController
   end
 
   def edit
+    # @report fetched from :set_report
   end
 
-  def create
-    @report = Report.new(report_params)
-    report_params.inspect
-    if @report.save
-      flash[:success] = 'Rapport "' + report_params[:name] + '" ajouté avec succès !'
-      redirect_to reports_url
-    else
-      render :new
-    end
+  def show
+    # @report fetched from :set_report
   end
 
   def update
     if @report.update(report_params)
-      flash[:success] = 'Rapport "' + report_params[:name] + '" mis à jour avec succès !'
+      flash[:success] = 'Report "' + report_params[:id] + '" updated !'
       redirect_to reports_url
     else
       render :edit
@@ -38,8 +44,9 @@ class ReportsController < ApplicationController
 
   def destroy
     @report.destroy
-      flash[:success] = 'Rapport effacé avec succès !'
-      redirect_to reports_url
+    flash[:success] = 'Report "' + report_params[:id] + '" destroyed !'
+
+    redirect_to reports_url
   end
 
   private

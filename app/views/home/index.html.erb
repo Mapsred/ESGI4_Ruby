@@ -1,13 +1,13 @@
 <h1>
-  Ceci est la page d'accueil du projet
+  This is the homepage of the projet
   <%= Rails.application.class.parent_name %> !
 </h1>
 
 <% if @expedition.present? %>
-  <p>Une expédition est en cours jusqu'au <%= @expedition.end_date.to_formatted_s('%B %d %Y') %></p>
+  <p>An expedition is in progress until the <%= @expedition.end_date.to_formatted_s('%B %d %Y') %></p>
 <% else %>
-  <p>Aucune expédition en cours, vous pouvez en démarrer une ici : </p>
+  <p>No expedition in progress, you can start one here : </p>
   <a href="<%= new_expedition_path %>" type="button" class="btn btn-default">
-    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajouter une expédition
+    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Start an expedition
   </a>
 <% end %>

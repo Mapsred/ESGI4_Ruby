@@ -1,8 +1,8 @@
 <% if @astronaut.errors.any? %>
   <div class="callout callout-danger">
-    <h4>Erreur lors de la sauvegarde de l'objet</h4>
+    <h4>Error during the object save</h4>
 
-    <p>Il y a une ou plusieurs erreurs sur cet objet :</p>
+    <p>There is one or more errors for this object :</p>
     <ul>
       <% @astronaut.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>

@@ -2,13 +2,6 @@
   <div class="col-md-12">
     <h1>Name : <%= @report.name %></h1>
     <p>Description : <%= @report.description %></p>
-    <p>Astronaut :
-      <% astronaut = @report.astronaut %>
-      <% if astronaut.nil? %>
-        Non défini.
-      <% else %>
-        <%= astronaut.name %>
-      <% end %>
-    </p>
+    <p>Astronaut : <%= @report.astronaut.nil? ? '&empty;' : @report.astronaut.name %></p>
   </div>
 </div>
