@@ -10,6 +10,9 @@
 //= require dataTables/jquery.dataTables
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 
+//= require Chart.bundle
+//= require chartkick
+
 let Table = {
     init: function () {
         Table.initTable();

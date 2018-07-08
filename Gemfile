@@ -74,3 +74,6 @@ gem 'jquery-datatables-rails', '~> 3.4.0'
 # Devise
 gem 'devise'
 gem 'devise-i18n'
+
+# Chart
+gem 'chartkick'
