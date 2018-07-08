@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :reports
   root 'home#index', as: 'home'
+  root 'home#credit', as: 'credit'
+  root 'home#partner', as: 'partner'
+  root 'home#condition', as: 'condition'
 
   # Routes for planets
   resources :planets
@@ -14,4 +16,8 @@ Rails.application.routes.draw do
 
   # Routes for expeditions
   resources :expeditions
+
+  # Routes for reports
+  resources :reports
+
 end
