@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# ExpeditionController
+# Expedition Controller
 class ExpeditionsController < ApplicationController
   before_action :set_expedition, only: %i[show edit update destroy]
   before_action :expedition_in_progress, only: %i[new create]
