@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
-  <!-- <link rel="icon" type="image/png" href="icon/icons8-planet-48.png"> -->
+  <link rel="icon" type="image/png" href="assets/icon/icons8-planet-48.png">
 
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -70,5 +70,14 @@
   <% end %>
 
   <%= yield %>
-</div> <!-- /.container --></body>
+</div> <!-- /.container -->
+
+<div class="footer">
+  <p>
+    <%= link_to 'Partner', partner_path %>
+    <%= link_to 'Credit', credit_path %>
+    <%= link_to 'Term&Condition', condition_path %>
+  </p>
+</div>
+</body>
 </html>
