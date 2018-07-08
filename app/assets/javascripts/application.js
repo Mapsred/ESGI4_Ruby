@@ -7,6 +7,34 @@
 //= require daterangepicker
 //= require select2
 //= require select2_locale_fr
+//= require dataTables/jquery.dataTables
+//= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
+
+let Table = {
+    init: function () {
+        Table.initTable();
+    },
+
+    initTable: function () {
+        $('#dataTable tfoot th').each(function () {
+            let title = $(this).text();
+            let disabled = $(this).hasClass('disabled') ? 'disabled' : '';
+
+            $(this).html('<input type="text" class="form-control column_search" style="width: 100%" ' +
+                'placeholder="' + title + '" ' + disabled + ' />');
+        });
+
+        Table.table = $('#dataTable').DataTable({
+            "scrollX": true,
+            "sPaginationType": "full_numbers",
+        });
+
+        $('#dataTable_wrapper').on('keyup', ".column_search", function () {
+            Table.table.column($(this).parent().index()).search(this.value).draw();
+        });
+
+    },
+};
 
 
 $(document).ready(function () {
@@ -16,7 +44,7 @@ $(document).ready(function () {
         }
     });
 
-    var dateFormat = "DD/MM/YYYY";
+    let dateFormat = "DD/MM/YYYY";
     $('[data-provider="daterange"]').daterangepicker({
         autoUpdateInput: false,
         autoApply: true,
@@ -66,4 +94,6 @@ $(document).ready(function () {
         language: "fr",
         multiple: true,
     });
+
+    Table.init();
 });
