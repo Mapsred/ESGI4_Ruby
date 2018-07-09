@@ -3,6 +3,8 @@
   <%= Rails.application.class.parent_name %> !
 </h1>
 
+<% pie_chart [["Football", 10], ["Basketball", 5]] %>
+
 <% if @expedition.present? %>
   <p>An expedition is in progress until the <%= @expedition.end_date.to_formatted_s('%B %d %Y') %></p>
 <% else %>
@@ -11,5 +13,3 @@
     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Start an expedition
   </a>
 <% end %>
-
-<% pie_chart [["Football", 10], ["Basketball", 5]] %>
