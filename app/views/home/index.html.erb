@@ -13,8 +13,8 @@
 <% end %>
 
 <p>Graph of Astronaut Created by date</p>
-<%= line_chart Astronaut.group_by_day(:created_at).count, download: "RubyPlanetUser" %>
+<%= line_chart Astronaut.group_by_day(:created_at).count, download: "RubyPlanetUser.png" %>
 <p>Graph of Grade for User</p>
-<%= pie_chart Grade.group(:name).count, download: "RubyPlanetGrade" %>
+<%= pie_chart Grade.group(:name).count, download: "RubyPlanetGrade.png" %>
 
 <br /> <br />
