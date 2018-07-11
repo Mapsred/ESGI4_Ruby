@@ -77,3 +77,4 @@ gem 'devise-i18n'
 
 # Chart
 gem 'chartkick'
+gem 'groupdate'
