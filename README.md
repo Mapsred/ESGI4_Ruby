@@ -23,6 +23,18 @@ bin/rails server -b 0.0.0.0 -p 3000 -e development
 Scenarios
 ---------
 
+### Starting block
+
+#### Without seeds
+
+If you don't want to use the seed, you need to create the entities in the following order : 
+* User
+* Planet(s)
+* Grade(s)
+* Astronaut(s)
+* Expedition
+* Report
+
 ### Disconnected User
 
 **Navigate :** At first, the user is not connected and can only see the content.
@@ -37,7 +49,7 @@ You can navigate freely and see the existing content lists or the details pages.
  
 ### Connected User
 
-**Homepage :** The homepage serves as a dashbord it (will) contain charts with data as the number of created ``Reports`` during an ``Expedition``.
+**Homepage :** The homepage serves as a dashbord it contain charts (you can download them) with data as the number of created ``Reports`` during an ``Expedition``.
 You (will) also be able to start an ``Expedition`` if one it not in progress, or the end date of the current ``Expedition``.
 
 
