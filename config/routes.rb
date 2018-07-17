@@ -20,4 +20,13 @@ Rails.application.routes.draw do
   # Routes for reports
   resources :reports
 
+  # Routes for reports
+  resources :partner
+
+  # Routes for reports
+  resources :condition
+
+  # Routes for reports
+  resources :credit
+
 end
