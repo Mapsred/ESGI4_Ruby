@@ -3,6 +3,7 @@ class CreatePlanets < ActiveRecord::Migration[5.2]
     create_table :planets do |t|
       t.string :name
       t.string :description
+      t.string :image
 
       t.timestamps
     end
