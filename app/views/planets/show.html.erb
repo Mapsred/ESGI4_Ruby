@@ -17,6 +17,15 @@
     </div>
 
     <div class="col-md-12">
+    <%# if @planets.photo? %>
+      <label class="col-sm-2">Image</label>
+      <img src="<%= url_for(@planet.photo) %>" alt="Planet Photo">
+    <%# else %>
+<!--      <span>No photo</span>-->
+    <%# end %>
+    </div>
+
+    <div class="col-md-12">
       <label class="col-sm-2">Created at</label>
       <span><%= @planet.created_at.strftime('%d/%m/%Y') %></span>
     </div>

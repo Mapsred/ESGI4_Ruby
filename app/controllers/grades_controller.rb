@@ -31,9 +31,9 @@ class GradesController < ApplicationController
 
   def update
     if @grade.update grade_params
-      flash[:success] = 'Grade "' + grade_params[:id] + '" updated !'
+      flash[:success] = 'Grade "' + grade_params[:name] + '" updated !'
 
-      redirect_to @grade
+      redirect_to grades_url
     else
       render 'edit'
     end

@@ -34,9 +34,9 @@ class PlanetsController < ApplicationController
 
   def update
     if @planet.update_attributes planet_attributes
-      flash[:success] = 'Planet #' + planet_attributes[:id] + ' updated !'
+      flash[:success] = 'Planet #' + planet_attributes[:name] + ' updated !'
 
-      redirect_to planet_path @planet
+      redirect_to planets_url
     else
       render action: :edit
     end
@@ -52,7 +52,7 @@ class PlanetsController < ApplicationController
   private
 
   def planet_attributes
-    params.require(:planet).permit(:name, :description)
+    params.require(:planet).permit(:name, :description, :photo)
   end
 
   def fetch_planet

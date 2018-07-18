@@ -30,9 +30,9 @@ class AstronautsController < ApplicationController
 
   def update
     if @astronaut.update_attributes astronaut_parameters
-      flash[:success] = 'Astronaut #' + astronaut_parameters[:id] + ' updated !'
+      flash[:success] = 'Astronaut #' + astronaut_parameters[:name] + ' updated !'
 
-      redirect_to astronaut_path @astronaut
+      redirect_to astronauts_url
     else
       render action: :edit
     end
