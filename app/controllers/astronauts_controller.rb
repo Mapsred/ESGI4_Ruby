@@ -45,7 +45,8 @@ class AstronautsController < ApplicationController
   def destroy
     @astronaut.destroy
 
-    flash[:success] = 'Astronaut #' + astronaut_parameters[:id] + ' destroyed !'
+    flash[:success] = 'Astronaut destroyed with success !'
+    redirect_to astronauts_url
   end
 
   private

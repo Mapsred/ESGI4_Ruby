@@ -46,7 +46,7 @@ class ExpeditionsController < ApplicationController
 
   def destroy
     @expedition.destroy
-    flash[:success] = 'Expedition "' + expedition_params[:id] + '" destroyed !'
+    flash[:success] = 'Expedition destroyed with success !'
 
     redirect_to expeditions_url
     head :no_content

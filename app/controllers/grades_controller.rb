@@ -42,7 +42,7 @@ class GradesController < ApplicationController
   def destroy
     @grade.destroy
 
-    flash[:success] = 'Grade "' + grade_params[:id] + '" destroyed !'
+    flash[:success] = 'Grade destroyed with success !'
 
     redirect_to grades_url
   end
