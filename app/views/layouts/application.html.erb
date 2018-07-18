@@ -43,10 +43,6 @@
           <%= link_to "Reports", reports_path %>
         </li>
 
-        <li class="<%= 'active' if params[:controller] == 'expeditions' %>">
-          <%= link_to "Expeditions", expeditions_path %>
-        </li>
-
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
