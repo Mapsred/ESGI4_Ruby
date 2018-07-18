@@ -36,9 +36,9 @@ class ExpeditionsController < ApplicationController
 
   def update
     if @expedition.update(expedition_params)
-      flash[:success] = 'Expedition #' + expedition_params[:id] + ' updated !'
+      flash[:success] = 'Expedition #' + expedition_params[:name] + ' updated !'
 
-      redirect_to expedition_path @expedition
+      redirect_to expeditions_url
     else
       render :edit
     end

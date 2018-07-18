@@ -31,12 +31,12 @@
           <%= link_to "Planets", planets_path %>
         </li>
 
-        <li class="<%= 'active' if params[:controller] == 'astronauts' %>">
-          <%= link_to "Astronauts", astronauts_path %>
-        </li>
-
         <li class="<%= 'active' if params[:controller] == 'grades' %>">
           <%= link_to "Grades", grades_path %>
+        </li>
+
+        <li class="<%= 'active' if params[:controller] == 'astronauts' %>">
+          <%= link_to "Astronauts", astronauts_path %>
         </li>
 
         <li class="<%= 'active' if params[:controller] == 'reports' %>">

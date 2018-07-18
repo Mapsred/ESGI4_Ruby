@@ -73,7 +73,6 @@ ActiveRecord::Schema.define(version: 2018_07_17_194933) do
   create_table "planets", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

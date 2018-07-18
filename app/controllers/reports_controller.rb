@@ -35,7 +35,7 @@ class ReportsController < ApplicationController
 
   def update
     if @report.update(report_params)
-      flash[:success] = 'Report "' + report_params[:id] + '" updated !'
+      flash[:success] = 'Report "' + report_params[:name] + '" updated !'
       redirect_to reports_url
     else
       render :edit
