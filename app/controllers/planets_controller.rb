@@ -45,7 +45,8 @@ class PlanetsController < ApplicationController
   def destroy
     @planet.destroy
 
-    flash[:success] = 'Planet #' + planet_attributes[:id] + ' destroyed !'
+    flash[:success] = 'Planet destroyed with success!'
+    redirect_to planets_url
   end
 
   private

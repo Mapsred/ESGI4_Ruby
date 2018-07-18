@@ -44,7 +44,7 @@ class ReportsController < ApplicationController
 
   def destroy
     @report.destroy
-    flash[:success] = 'Report "' + report_params[:id] + '" destroyed !'
+    flash[:success] = 'Report destroyed with success !'
 
     redirect_to reports_url
   end
