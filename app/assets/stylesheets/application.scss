@@ -10,9 +10,12 @@ body {
   color: white;
   font-family: helvetica, verdana, arial, sans-serif;
   font-size: 13px;
-  background: #fff image-url('background.jpg') no-repeat;
+  background: image-url('background.jpg') no-repeat;
   background-size: 100%;
-  background-color: black;
+}
+
+.daterangepicker {
+  color: #999;
 }
 
 h1 {
@@ -23,9 +26,17 @@ h1 {
   background-color: rgba(0, 0, 0, 0);
 }
 
-.table {
-  background-color: darkcyan;
-  border-radius: 5px;
+table {
+  background-color: #FFF;
+  color: #000;
+}
+
+.dataTables_scrollHead table {
+  border-radius: 5px 5px 0 0;
+}
+
+.dataTables_scrollFoot table {
+  border-radius: 0 0 5px 5px;
 }
 
 .footer {
